@@ -15,6 +15,7 @@ fi
 
 # Set up fzf
 source <(fzf --zsh)
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
 # Set up zoxide
 eval "$(zoxide init zsh)"
