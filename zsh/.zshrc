@@ -5,10 +5,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Set up ssh agent and ensure only one process runs at a time
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+# Set up fzf
 source <(fzf --zsh)
+
+# Set up zoxide
 eval "$(zoxide init zsh)"
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+#Aliases
 alias ls="eza --icons=always --color=always"
 alias cat="bat"
 alias cd="z"
