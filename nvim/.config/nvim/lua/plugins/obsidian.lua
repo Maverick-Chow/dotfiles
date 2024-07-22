@@ -22,14 +22,6 @@ return {
         name = "My Notes",
         path = "~/Desktop/My Stuff/003 Miscellaneous/Maverick's Obsidian Vault",
       },
-      {
-        name = "testvault",
-        path = "~/Desktop/testvault",
-      },
-      {
-        name = "My Notes(Linux)",
-        path = "~/Documents/Maverick's Obsidian Vault",
-      }
     },
     completion = {
       -- Set to false to disable completion.
