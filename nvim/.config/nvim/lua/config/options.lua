@@ -1,6 +1,7 @@
 -- enable line number and relative line number
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = '80'
 
 -- width of a tab
 -- vim.opt.shiftwidth = 4

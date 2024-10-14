@@ -11,6 +11,7 @@ return {
         "lua",
         "haskell",
         "c",
+        "cpp",
         "css",
         "dockerfile",
         "git_config",
