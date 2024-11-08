@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("debug")
 -- enable line number and relative line number
 vim.opt.number = true
 vim.opt.relativenumber = true
