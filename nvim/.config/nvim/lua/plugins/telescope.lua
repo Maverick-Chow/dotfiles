@@ -20,7 +20,6 @@ return {
             require("telescope.themes").get_dropdown {
               -- even more opts
             }
-
             -- pseudo code / specification for writing custom displays, like the one
             -- for "codeactions"
             -- specific_opts = {
@@ -35,6 +34,9 @@ return {
             --   codeactions = false,
             -- }
           }
+        },
+        find_files = {
+          hidden = true
         }
       }
       -- To get ui-select loaded and working with telescope, you need to call
