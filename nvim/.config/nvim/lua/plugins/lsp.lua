@@ -1,10 +1,12 @@
 return {
+  -- Mason helps with downloading and organising my LSPs
   {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
     end
   },
+  -- Mason LSPconfig ensure smooth integration with nvim lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -20,6 +22,7 @@ return {
       })
     end
   },
+  -- Enable lsp support in nvim
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -87,7 +90,6 @@ return {
       vim.diagnostic.config({
         virtual_text = false,
         underline = true,
-        update_in_insert = false,
         signs = true,
         float = false,
         severity_sort = true,
@@ -126,6 +128,36 @@ return {
       --   vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
       -- end
       -- vim.cmd [[ autocmd! CursorHold * lua PrintDiagnostics() ]]
+    end
+  },
+  -- Cmp nvim lsp integrates nvim cmp with lsp config
+  {
+    "hrsh7th/cmp-nvim-lsp"
+  },
+  -- Nvim cmp enables auto completion in nvim
+  {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      local cmp = require'cmp'
+
+      cmp.setup({
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<Tab>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+        }, {
+            { name = 'buffer' },
+          })
+      })
     end
   }
 }
