@@ -24,7 +24,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 300
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -109,11 +109,6 @@ alt-s = 'workspace 2'
 alt-d = 'workspace 3'
 alt-f = 'workspace 4'
 alt-g = 'workspace 5'
-alt-z = 'workspace 6'
-alt-x = 'workspace 7'
-alt-c = 'workspace 8'
-alt-v = 'workspace 9'
-alt-b = 'workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-a = 'move-node-to-workspace 1'
@@ -121,11 +116,6 @@ alt-shift-s = 'move-node-to-workspace 2'
 alt-shift-d = 'move-node-to-workspace 3'
 alt-shift-f = 'move-node-to-workspace 4'
 alt-shift-g = 'move-node-to-workspace 5'
-alt-shift-z = 'move-node-to-workspace 6'
-alt-shift-x = 'move-node-to-workspace 7'
-alt-shift-c = 'move-node-to-workspace 8'
-alt-shift-v = 'move-node-to-workspace 9'
-alt-shift-b = 'move-node-to-workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
