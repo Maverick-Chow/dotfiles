@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 
 -- split keymaps
-vim.keymap.set("n", "<leader>sv", "<C-w>v")
-vim.keymap.set("n", "<leader>sh", "<C-w>s")
-vim.keymap.set("n", "<leader>se", "<C-w>=")
-vim.keymap.set("n", "<leader>sx", ":close<CR>")
-vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
+vim.keymap.set("n", "<leader>wv", "<C-w>v", {desc = "Split window vertically"})
+vim.keymap.set("n", "<leader>wh", "<C-w>s", {desc = "Split window horizontally"})
+vim.keymap.set("n", "<leader>we", "<C-w>=", {desc = "Equalize window sizes"})
+vim.keymap.set("n", "<leader>wx", ":close<CR>", {desc = "Close window"})
+vim.keymap.set("n", "<leader>wm", ":MaximizerToggle<CR>", {desc = "Maximize window"})
