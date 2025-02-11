@@ -11,6 +11,10 @@ return {
     end
   },
   {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
+  {
     "nvim-lualine/lualine.nvim",
     config = function()
       require('lualine').setup({
