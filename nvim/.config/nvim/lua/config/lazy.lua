@@ -11,4 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+if not vim.g.vscode then
+  require("lazy").setup("plugins")
+else
+  require("lazy").setup({
+    spec = {
+      { import = "plugins.treesitter" },
+    },
+  })
+end

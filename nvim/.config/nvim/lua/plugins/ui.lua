@@ -62,8 +62,6 @@ return {
       require('neominimap').winOff({})
       vim.api.nvim_create_autocmd({"WinNew"}, {
         callback = function()
-          -- Your command here, for example:
-          vim.cmd("echo 'New window opened'")
           require('neominimap').winOff({})
         end,
       })
