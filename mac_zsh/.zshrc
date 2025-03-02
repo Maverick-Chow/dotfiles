@@ -29,6 +29,16 @@ eval "$(zoxide init zsh)"
 # Enable C programming tools in the .c-tools folder (IC)
 source ~/.c-tools
 
+# Yazi (enable yazi to enter directory on exit)
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # ====================
 # Alias
 # ====================
