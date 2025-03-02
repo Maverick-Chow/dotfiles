@@ -17,6 +17,7 @@ else
   require("lazy").setup({
     spec = {
       { import = "plugins.treesitter" },
+      -- { import = "plugins.lsp"},
     },
   })
 end
