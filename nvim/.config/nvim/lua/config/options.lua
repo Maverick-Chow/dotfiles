@@ -5,13 +5,12 @@ vim.opt.relativenumber = true
 vim.opt.colorcolumn = '80'
 
 -- width of a tab
--- vim.opt.shiftwidth = 4
--- vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
-
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
+
+-- yank to clipboard
+vim.opt.clipboard = 'unnamedplus'
 
 -- use number of spaces to insert a <Tab>
 vim.opt.expandtab = true
