@@ -22,6 +22,10 @@ return {
       })
     end
   },
+  -- Enable Java lsp support
+  {
+    "mfussenegger/nvim-jdtls",
+  },
   -- Enable lsp support in nvim
   {
     "neovim/nvim-lspconfig",
