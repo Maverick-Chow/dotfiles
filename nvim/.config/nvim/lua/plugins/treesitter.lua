@@ -25,6 +25,9 @@ return {
           "markdown_inline",
           "sql",
           "scala",
+          "javascript",
+          "typescript",
+          "tsx",
         },
         incremental_selection = {
           enable = true,

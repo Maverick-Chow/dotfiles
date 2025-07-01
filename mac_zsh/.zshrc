@@ -46,6 +46,7 @@ alias ls="eza --icons --colour=always"
 alias cat="bat"
 alias cd="z"
 alias zz="z -"
+alias nn="cd /Users/maverickchow/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Maverick\'s\ Obsidian\ Vault;nvim"
 
 
 # ====================
@@ -57,6 +58,9 @@ alias zz="z -"
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Notes/MarkDown
+export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 
 # ====================
 # API keys

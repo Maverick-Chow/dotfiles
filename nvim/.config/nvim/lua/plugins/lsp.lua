@@ -15,9 +15,9 @@ return {
           "lua_ls",
           "kotlin_language_server",
           "hls",
-          -- "jdtls",
           "pylsp",
           "clangd",
+          -- "marksman"
         }
       })
     end
@@ -50,6 +50,9 @@ return {
       lspconfig.clangd.setup({
         capabilities = capabilities
       })
+      -- lspconfig.marksman.setup({
+      --   capabilities = capabilities
+      -- })
 
 
       -- Global mappings.
