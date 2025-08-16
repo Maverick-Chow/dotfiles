@@ -35,9 +35,7 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities
       })
-      lspconfig.kotlin_language_server.setup({
-        capabilities = capabilities
-      })
+      
       lspconfig.hls.setup({
         capabilities = capabilities
       })
