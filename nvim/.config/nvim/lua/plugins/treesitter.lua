@@ -16,6 +16,9 @@ return {
           "python",
           "markdown",
           "markdown_inline",
+          "git_config",
+          "git_rebase",
+          "gitignore",
         },
         incremental_selection = {
           enable = true,
