@@ -24,7 +24,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 300
+accordion-padding = 50
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -104,18 +104,24 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-a = 'workspace 1'
-alt-s = 'workspace 2'
-alt-d = 'workspace 3'
-alt-f = 'workspace 4'
-alt-g = 'workspace 5'
+alt-a = 'workspace work-1'
+alt-s = 'workspace work-2'
+alt-d = 'workspace work-3'
+alt-f = 'workspace floating'
+alt-g = 'workspace productivity'
+alt-z = 'workspace extended-1'
+alt-x = 'workspace extended-2'
+alt-c = 'workspace chats'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-a = 'move-node-to-workspace 1'
-alt-shift-s = 'move-node-to-workspace 2'
-alt-shift-d = 'move-node-to-workspace 3'
-alt-shift-f = 'move-node-to-workspace 4'
-alt-shift-g = 'move-node-to-workspace 5'
+alt-shift-a = 'move-node-to-workspace work-1'
+alt-shift-s = 'move-node-to-workspace work-2'
+alt-shift-d = 'move-node-to-workspace work-3'
+alt-shift-f = 'move-node-to-workspace floating'
+alt-shift-g = 'move-node-to-workspace productivity'
+alt-shift-z = 'move-node-to-workspace extended-1'
+alt-shift-x = 'move-node-to-workspace extended-2'
+alt-shift-c = 'move-node-to-workspace chats'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -138,3 +144,7 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+    if.workspace = 'floating'
+    run = ['layout floating']
