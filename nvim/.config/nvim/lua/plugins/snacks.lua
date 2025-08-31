@@ -31,7 +31,11 @@ return {
       notification = {
         wo = { wrap = true } -- Wrap notifications
       }
-    }
+    },
+    image = {
+    },
+    indent = {
+    },
   },
   keys = {
     { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },

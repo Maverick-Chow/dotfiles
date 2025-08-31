@@ -1,26 +1,26 @@
 return {
   -- Mason helps with downloading and organising my LSPs
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end
+    "mason-org/mason.nvim",
+    opts = {}
   },
   -- Mason LSPconfig ensure smooth integration with nvim lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "kotlin_language_server",
-          "hls",
-          "pylsp",
-          "clangd",
-          -- "marksman"
-        }
-      })
-    end
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "kotlin_language_server",
+        "hls",
+        "pylsp",
+        "clangd",
+        -- "marksman"
+      }
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    }
   },
   -- Enable Java lsp support
   {
