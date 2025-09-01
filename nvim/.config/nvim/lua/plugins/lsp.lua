@@ -1,26 +1,26 @@
 return {
   -- Mason helps with downloading and organising my LSPs
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end
+    "mason-org/mason.nvim",
+    opts = {}
   },
   -- Mason LSPconfig ensure smooth integration with nvim lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "kotlin_language_server",
-          "hls",
-          "pylsp",
-          "clangd",
-          -- "marksman"
-        }
-      })
-    end
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "kotlin_language_server",
+        "hls",
+        "pylsp",
+        "clangd",
+        -- "marksman"
+      }
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    }
   },
   -- Enable Java lsp support
   {
@@ -35,9 +35,7 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities
       })
-      lspconfig.kotlin_language_server.setup({
-        capabilities = capabilities
-      })
+      
       lspconfig.hls.setup({
         capabilities = capabilities
       })
@@ -221,52 +219,10 @@ return {
       )
     end
   },
-  -- -- Nvim metals enables scala support in nvim
-  -- {
-  --   "scalameta/nvim-metals",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   ft = { "scala", "sbt", "java" },
-  --   opts = function()
-  --     local metals_config = require("metals").bare_config()
-  --
-  --     -- Example of settings
-  --     metals_config.settings = {
-  --       showImplicitArguments = true,
-  --       excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-  --     }
-  --
-  --     -- *READ THIS*
-  --     -- I *highly* recommend setting statusBarProvider to either "off" or "on"
-  --     --
-  --     -- "off" will enable LSP progress notifications by Metals and you'll need
-  --     -- to ensure you have a plugin like fidget.nvim installed to handle them.
-  --     --
-  --     -- "on" will enable the custom Metals status extension and you *have* to have
-  --     -- a have settings to capture this in your statusline or else you'll not see
-  --     -- any messages from metals. There is more info in the help docs about this
-  --     metals_config.init_options.statusBarProvider = "off"
-  --
-  --     -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
-  --     metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-  --     metals_config.on_attach = function(client, bufnr)
-  --       require("metals")
-  --     end
-  --
-  --
-  --     return metals_config
-  --   end,
-  --   config = function(self, metals_config)
-  --     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = self.ft,
-  --       callback = function()
-  --         require("metals").initialize_or_attach(metals_config)
-  --       end,
-  --       group = nvim_metals_group,
-  --     })
-  --   end
-  --
-  -- }
+  {
+      'Kicamon/markdown-table-mode.nvim',
+      config = function()
+          require('markdown-table-mode').setup()
+      end
+  },
 }

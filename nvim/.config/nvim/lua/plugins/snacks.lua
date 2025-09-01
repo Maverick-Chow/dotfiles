@@ -31,7 +31,16 @@ return {
       notification = {
         wo = { wrap = true } -- Wrap notifications
       }
-    }
+    },
+    image = {
+    },
+    indent = {
+    },
+    scroll = {
+      animate = {
+        duration = { step = 5, total = 150},
+      },
+    },
   },
   keys = {
     { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
@@ -69,7 +78,9 @@ return {
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
+        Snacks.toggle.dim():map("<leader>uD")
+        Snacks.toggle.zen():map("<leader>uf")
       end,
     })
-  end,
+end,
 }
