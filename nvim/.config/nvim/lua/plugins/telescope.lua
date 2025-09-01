@@ -9,8 +9,15 @@ return {
       vim.keymap.set('n', '<leader>shf', function()
         require("telescope.builtin").find_files({ hidden = true })
       end, { desc = 'Find files (hidden)' })
+      vim.keymap.set('n', '<leader>shg', function()
+        builtin.live_grep({
+          additional_args = function(_)
+            return { "--hidden", "--glob", "!.git/*" }
+          end,
+        })
+      end, { desc = 'Search by grep (hidden)' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Search current word' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by Grep' })
+      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Search by grep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search diagnostics' })
       vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Find existing buffers' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search keymaps' })
