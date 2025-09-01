@@ -22,7 +22,7 @@ return {
       workspaces = {
         {
           name = "vault",
-          path = "/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault",
+          path = os.getenv("OBSIDIAN_PATH"),
         },
       },
       -- Optional, customize how note IDs are generated given an optional title.
