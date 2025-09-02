@@ -19,6 +19,7 @@ return {
           "git_config",
           "git_rebase",
           "gitignore",
+          "cmake",
         },
         incremental_selection = {
           enable = true,

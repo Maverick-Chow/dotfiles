@@ -14,7 +14,7 @@ return {
         "hls",
         "pylsp",
         "clangd",
-        -- "marksman"
+        "cmake",
       }
     },
     dependencies = {
@@ -35,22 +35,18 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities
       })
-      
       lspconfig.hls.setup({
         capabilities = capabilities
       })
-      -- lspconfig.jdtls.setup({
-      --   capabilities = capabilities
-      -- })
       lspconfig.pylsp.setup({
         capabilities = capabilities
       })
       lspconfig.clangd.setup({
         capabilities = capabilities
       })
-      -- lspconfig.marksman.setup({
-      --   capabilities = capabilities
-      -- })
+      lspconfig.cmake.setup({
+        capabilities = capabilities
+      })
 
 
       -- Global mappings.
