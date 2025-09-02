@@ -1,6 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
-  version = "*",  -- recommended, use latest release instead of latest commit
+  version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
@@ -53,12 +53,12 @@ return {
         vim.ui.open(url) -- need Neovim 0.10.0+
       end,
     })
-    vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<cr>", {desc = "Obsidian Backlinks"})
-    vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<cr>", {desc = "Obsidian Links"})
-    vim.keymap.set("n", "<leader>on", ":ObsidianNew<cr>", {desc = "Obsidian New"})
-    vim.keymap.set("n", "<leader>oe", ":ObsidianExtractNote<cr>", {desc = "Obsidian Extract"})
-    vim.keymap.set("n", "<leader>oq", ":ObsidianQuickSwitch<cr>", {desc = "Obsidian QuickSwitch"})
-    vim.keymap.set("n", "<leader>os", ":ObsidianSearch<cr>", {desc = "Obsidian Search"})
-    vim.keymap.set("n", "<leader>ot", ":ObsidianTags<cr>", {desc = "Obsidian Tags"})
+    vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<cr>", { desc = "Obsidian Backlinks" })
+    vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<cr>", { desc = "Obsidian Links" })
+    vim.keymap.set("n", "<leader>on", ":ObsidianNew<cr>", { desc = "Obsidian New" })
+    vim.keymap.set("n", "<leader>oe", ":ObsidianExtractNote<cr>", { desc = "Obsidian Extract" })
+    vim.keymap.set("n", "<leader>oq", ":ObsidianQuickSwitch<cr>", { desc = "Obsidian QuickSwitch" })
+    vim.keymap.set("n", "<leader>os", ":ObsidianSearch<cr>", { desc = "Obsidian Search" })
+    vim.keymap.set("n", "<leader>ot", ":ObsidianTags<cr>", { desc = "Obsidian Tags" })
   end
 }
