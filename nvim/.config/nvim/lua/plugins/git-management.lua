@@ -1,11 +1,5 @@
 return {
   {
-  "sindrets/diffview.nvim",
-  config = function()
-    require('diffview').setup()
-  end
-  },
-  {
     "tpope/vim-fugitive"
   },
   {
@@ -13,5 +7,6 @@ return {
     config = function()
       require('gitsigns').setup()
     end
-  }
+  },
+  -- Lazygit is configured via snacks
 }
