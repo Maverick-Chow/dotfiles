@@ -1,6 +1,6 @@
 vim.lsp.set_log_level("debug")
 -- enable line number and relative line number
-vim.opt.number = true
+vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = '80'
 
@@ -11,6 +11,8 @@ vim.opt.softtabstop = 2
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+vim.opt.scrolloff = 8
 
 -- yank to clipboard
 vim.opt.clipboard = 'unnamedplus'
