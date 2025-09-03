@@ -67,3 +67,4 @@ export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian
 # ====================
 
 source ~/api_keys/openai_key.sh
+export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
