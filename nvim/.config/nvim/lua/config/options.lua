@@ -21,3 +21,4 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.expandtab = true
 
 vim.opt.conceallevel = 2
+vim.opt.signcolumn = 'yes'
