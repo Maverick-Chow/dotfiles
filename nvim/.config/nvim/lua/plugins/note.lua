@@ -45,5 +45,6 @@ return {
     { "<leader>oq", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian QuickSwitch" },
     { "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Obsidian Search" },
     { "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Obsidian Tags" },
+    { "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Obsidian Paste Image" },
   }
 }

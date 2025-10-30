@@ -9,10 +9,12 @@ return {
         highlight = { enable = true },
         indent = { enable = true },
         ensure_installed = {
+          "sql",
           "lua",
           "haskell",
           "c",
           "cpp",
+          "java",
           "python",
           "markdown",
           "markdown_inline",

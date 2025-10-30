@@ -32,7 +32,13 @@ return {
         wo = { wrap = true } -- Wrap notifications
       }
     },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      doc = {
+        max_width = 80,
+        max_height = 15,
+      }
+    },
     indent = { enabled = true },
     scroll = {
       animate = {
@@ -51,6 +57,7 @@ return {
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
     { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    { "<leader>ui", function() Snacks.image.hover() end, desc = "Dismiss All Notifications" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
   },
