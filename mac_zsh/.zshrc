@@ -62,6 +62,9 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Notes/MarkDown
 export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 
+# Enable LLVM
+export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
+
 # ====================
 # API keys
 # ====================
