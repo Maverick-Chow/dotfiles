@@ -64,6 +64,8 @@ export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian
 
 # Enable LLVM
 export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
+# export PATH="$HOME/bin:$PATH" # simlink clang++ from llvm18 to clang++-18 in ~/bin
+# ln -s "$(brew --prefix llvm@18)/bin/clang++" ~/bin/clang++-18
 
 # ====================
 # API keys

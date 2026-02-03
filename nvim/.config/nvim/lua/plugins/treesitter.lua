@@ -22,6 +22,8 @@ return {
           "git_rebase",
           "gitignore",
           "cmake",
+          "http",
+          "c_sharp",
         },
         incremental_selection = {
           enable = true,

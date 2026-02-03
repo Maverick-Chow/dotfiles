@@ -15,6 +15,7 @@ return {
         "pylsp",
         "clangd",
         "cmake",
+        "ts_ls",
       }
     },
     dependencies = {
@@ -41,6 +42,9 @@ return {
         capabilities = capabilities
       })
       lspconfig.cmake.setup({
+        capabilities = capabilities
+      })
+      lspconfig.ts_ls.setup({
         capabilities = capabilities
       })
 
