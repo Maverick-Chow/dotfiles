@@ -73,3 +73,6 @@ export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
 
 source ~/api_keys/openai_key.sh
 export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
+
+# Added by Antigravity
+export PATH="/Users/maverickchow/.antigravity/antigravity/bin:$PATH"

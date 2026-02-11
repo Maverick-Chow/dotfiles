@@ -32,10 +32,10 @@ return {
     --   end
     --   return tostring(os.time()) .. "-" .. suffix
     -- end,
-    -- ---@param url string
-    -- follow_url_func = function(url)
-    --   vim.ui.open(url) -- need Neovim 0.10.0+
-    -- end,
+    ---@param url string
+    follow_url_func = function(url)
+      vim.ui.open(url) -- need Neovim 0.10.0+
+    end,
   },
   keys = {
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Obsidian Backlinks" },
