@@ -1,3 +1,8 @@
 theme = Catppuccin Mocha
-font-size = 15
-window-decoration = true
+font-size = 12
+# Disable GTK client decorations/margins
+window-decoration = none
+
+window-padding-x = 5
+window-padding-y = 10
+
