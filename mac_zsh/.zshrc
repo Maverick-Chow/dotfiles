@@ -25,10 +25,6 @@ source <(fzf --zsh)
 # zoxide
 eval "$(zoxide init zsh)"
 
-
-# Enable C programming tools in the .c-tools folder (IC)
-source ~/.c-tools
-
 # Yazi (enable yazi to enter directory on exit)
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -50,8 +46,11 @@ alias nn="cd /Users/maverickchow/Library/Mobile\ Documents/iCloud\~md\~obsidian/
 
 
 # ====================
-# Language specific configs
+# Programming stuff
 # ====================
+#
+# Enable C programming tools in the .c-tools folder (IC)
+source ~/.c-tools
 
 # Enable Haskell environment
 [ -f "/Users/maverickchow/.ghcup/env" ] && source "/Users/maverickchow/.ghcup/env"
@@ -60,19 +59,20 @@ alias nn="cd /Users/maverickchow/Library/Mobile\ Documents/iCloud\~md\~obsidian/
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Notes/MarkDown
+export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 
 # Enable LLVM
 export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
 # export PATH="$HOME/bin:$PATH" # simlink clang++ from llvm18 to clang++-18 in ~/bin
 # ln -s "$(brew --prefix llvm@18)/bin/clang++" ~/bin/clang++-18
+#
+# Added by Antigravity
+export PATH="/Users/maverickchow/.antigravity/antigravity/bin:$PATH"
 
 # ====================
 # API keys
 # ====================
 
 source ~/api_keys/openai_key.sh
-export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 
-# Added by Antigravity
-export PATH="/Users/maverickchow/.antigravity/antigravity/bin:$PATH"
