@@ -12,7 +12,9 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+  'exec-and-forget borders active_color=0xffff0566 inactive_color=0xff494d64 width=8.0'
+]
 
 # Start AeroSpace at login
 start-at-login = true
@@ -44,6 +46,11 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+
+exec-on-workspace-change = ['/bin/bash', '-lc',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -56,8 +63,10 @@ inner.horizontal = 10
 inner.vertical =   10
 outer.left =       10
 outer.bottom =     10
-outer.top =        10
+outer.top =        14
+# outer.top =        50
 outer.right =      10
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -109,11 +118,6 @@ alt-s = 'workspace 2'
 alt-d = 'workspace 3'
 alt-f = 'workspace 4'
 alt-g = 'workspace 5'
-alt-z = 'workspace 6'
-alt-x = 'workspace 7'
-alt-c = 'workspace 8'
-alt-v = 'workspace 9'
-alt-b = 'workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-a = 'move-node-to-workspace 1'
@@ -121,11 +125,6 @@ alt-shift-s = 'move-node-to-workspace 2'
 alt-shift-d = 'move-node-to-workspace 3'
 alt-shift-f = 'move-node-to-workspace 4'
 alt-shift-g = 'move-node-to-workspace 5'
-alt-shift-z = 'move-node-to-workspace 6'
-alt-shift-x = 'move-node-to-workspace 7'
-alt-shift-c = 'move-node-to-workspace 8'
-alt-shift-v = 'move-node-to-workspace 9'
-alt-shift-b = 'move-node-to-workspace 10'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -148,3 +147,4 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+

@@ -1,0 +1,120 @@
+#!/bin/bash
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+source "$CONFIG_DIR/colors.sh"
+
+##### Bar Appearance #####
+sketchybar --bar \
+  position=top \
+  height=34 \
+  y_offset=8 \
+  margin=10 \
+  corner_radius=12 \
+  blur_radius=30 \
+  color=0x33000000 \
+  border_width=1 \
+  border_color=0x22ffffff
+
+##### Changing Defaults #####
+default=(
+  padding_left=0
+  padding_right=0
+  icon.font="Hack Nerd Font:Regular:14.0"
+  label.font="SF Pro:Semibold:14.0"
+  icon.color=$WHITE
+  label.color=$WHITE
+  icon.padding_left=5
+  icon.padding_right=5
+  label.padding_left=5
+  label.padding_right=5
+  background.padding_left=5
+  background.padding_right=5
+)
+sketchybar --default "${default[@]}"
+
+##### Events #####
+sketchybar --add event aerospace_workspace_change
+
+##### Left spacer (keeps center truly centered) #####
+# sketchybar --add item spacer_left left \
+#   --set spacer_left width=dynamic icon.drawing=off label.drawing=off background.drawing=off
+
+##### AeroSpace workspaces (CENTER) #####
+for sid in $(aerospace list-workspaces --all); do
+  case "$sid" in
+    *)  space_icon="$sid" ;;
+  esac
+
+  sketchybar --add item space.$sid left \
+    --subscribe space.$sid aerospace_workspace_change \
+    --set space.$sid \
+      background.color=$TRANSPARENT \
+      background.corner_radius=5 \
+      background.height=25 \
+      background.drawing=off \
+      icon.padding_left=10 \
+      icon.padding_right=10 \
+      icon.y_offset=-1 \
+      label.padding_left=5 \
+      label.padding_right=10 \
+      label.position=centre \
+      label.y_offset=0 \
+      background.padding_left=6 \
+      background.padding_right=6 \
+      y_offset=0 \
+      icon="$space_icon" \
+      icon.font="SF Pro:Bold:16.0" \
+      icon.highlight_color=$ACCENT \
+      label.drawing=off \
+      label.font="sketchybar-app-font:Regular:14.0" \
+      label.y_offset=-1 \
+      click_script="aerospace workspace $sid" \
+      script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+done
+
+##### Left Items #####
+# sketchybar --add item chevron left \
+#   --set chevron icon= label.drawing=off \
+#   --add item front_app left \
+#   --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+#   --subscribe front_app front_app_switched
+
+##### Right Items #####
+sketchybar --add item clock right \
+  --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+  --add item battery right \
+  --set battery update_freq=120 icon.drawing=on icon.font="Hack Nerd Font:Regular:14.0" script="$PLUGIN_DIR/battery.sh" \
+  --subscribe battery system_woke power_source_change \
+  --add item calendar_event right \
+  --set calendar_event \
+    update_freq=60 \
+    script="$PLUGIN_DIR/calendar_event.sh" \
+    click_script="open -a Calendar" \
+    icon.font="Hack Nerd Font:Regular:14.0" \
+    label.color="$WHITE" \
+    background.drawing=on \
+    background.color="$GREY_TRANSP" \
+    background.corner_radius=5 \
+    background.height=25 \
+    icon.padding_left=10 \
+    icon.padding_right=3 \
+    label.padding_left=3 \
+    label.padding_right=10 \
+    background.padding_left=6 \
+    background.padding_right=6 \
+  --add item things_todo right \
+  --set things_todo update_freq=60 \
+    script="$PLUGIN_DIR/things_todo.sh" \
+    click_script="open -a Things3" \
+    background.drawing=on \
+    background.color=$GREY_TRANSP \
+    background.corner_radius=5 \
+    background.height=25 \
+    icon.padding_left=10 \
+    icon.padding_right=3 \
+    label.padding_left=3 \
+    label.padding_right=10 \
+    background.padding_left=6 \
+    background.padding_right=6 \
+
+sketchybar --update
