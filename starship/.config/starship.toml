@@ -1,0 +1,17 @@
+add_newline = true
+format = "$directory$git_branch$git_status\n$character"
+
+[directory]
+truncate_to_repo = true
+truncation_length = 2
+
+[git_branch]
+format = " [$branch]($style)"
+
+[git_status]
+format = " $all_status$ahead_behind"
+
+[character]
+success_symbol = "[->](bright-green) "
+error_symbol   = "[->](bright-red) "
+
