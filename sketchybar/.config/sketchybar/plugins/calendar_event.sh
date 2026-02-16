@@ -26,9 +26,9 @@ if [ -z "$LABEL" ]; then
     icon="󰃮" \
     icon.color="$RED" \
     icon.padding_left=10 \
-    icon.padding_right=10 \
+    icon.padding_right=0 \
     label="" \
-    label.padding_right=0
+    label.padding_right=4
 else
   # Icon with label - normal padding
   sketchybar --set "$NAME" \

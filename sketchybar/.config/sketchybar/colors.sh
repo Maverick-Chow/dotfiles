@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Color Palette - Shared between borders and sketchybar
-export ACCENT=0xffff0566             # Pink/Magenta accent (from borders)
-export ACCENT_TRANSPARENT=0x44ff0566 # Transparent version of accent
+export ACCENT=0xffeff1f5             # Pink/Magenta accent (from borders)
+export ACCENT_TRANSPARENT=0x44eff1f5 # Transparent version of accent
 
 export BAR_COLOR=0x40000000     # Bar background
 export ITEM_BG_COLOR=0x44ffffff # Item background
