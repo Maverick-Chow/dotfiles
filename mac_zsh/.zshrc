@@ -46,7 +46,7 @@ export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obs
 export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
 
 # Enable LLVM
-export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
+# export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
 # export PATH="$HOME/bin:$PATH" # simlink clang++ from llvm18 to clang++-18 in ~/bin
 # ln -s "$(brew --prefix llvm@18)/bin/clang++" ~/bin/clang++-18
 #
@@ -64,3 +64,24 @@ source ~/api_keys/openai_key.sh
 # ====================
 
 eval "$(starship init zsh)"
+
+# ====================
+# Sketchybar timer
+# ====================
+timer()       { printf "%s\n%s" "$(date -v +${2:-25}M +%s)" "${1:-Timer}" > /tmp/sketchybar_timer; }
+timer_pause() {
+  TIMER_FILE="/tmp/sketchybar_timer"
+  END_TIME=$(awk 'NR==1' "$TIMER_FILE")
+  NAME=$(awk 'NR==2' "$TIMER_FILE")
+  REMAINING=$((END_TIME - $(date +%s)))
+  printf "%s\n%s\npaused" "$REMAINING" "$NAME" > /tmp/sketchybar_timer_paused
+  rm "$TIMER_FILE"
+}  # paste pause block
+timer_resume(){
+  PAUSED_FILE="/tmp/sketchybar_timer_paused"
+  REMAINING=$(awk 'NR==1' "$PAUSED_FILE")
+  NAME=$(awk 'NR==2' "$PAUSED_FILE")
+  printf "%s\n%s" "$(date -v +${REMAINING}S +%s)" "$NAME" > /tmp/sketchybar_timer
+  rm "$PAUSED_FILE"
+}  # paste resume block
+timer_cancel(){ rm -f /tmp/sketchybar_timer /tmp/sketchybar_timer_paused; }
