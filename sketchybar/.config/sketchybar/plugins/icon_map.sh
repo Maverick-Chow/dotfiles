@@ -453,16 +453,16 @@ function __icon_map() {
   "Messenger")
     icon_result=":messenger:"
     ;;
-  "Microsoft Edge")
+  "Edge")
     icon_result=":microsoft_edge:"
     ;;
-  "Microsoft Excel")
+  "Excel")
     icon_result=":microsoft_excel:"
     ;;
   "Outlook")
     icon_result=":microsoft_outlook:"
     ;;
-  "Microsoft PowerPoint")
+  "PowerPoint")
     icon_result=":microsoft_power_point:"
     ;;
   "Microsoft Remote Desktop")
@@ -471,7 +471,7 @@ function __icon_map() {
   "Microsoft Teams" | "Microsoft Teams (work or school)")
     icon_result=":microsoft_teams:"
     ;;
-  "Microsoft Word")
+  "Word")
     icon_result=":microsoft_word:"
     ;;
   "Min")
@@ -837,7 +837,7 @@ function __icon_map() {
   "Vivaldi")
     icon_result=":vivaldi:"
     ;;
-  "VLC")
+  "VLC" | "QuickTime Player")
     icon_result=":vlc:"
     ;;
   "VMware Fusion")
