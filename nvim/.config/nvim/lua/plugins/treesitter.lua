@@ -24,6 +24,9 @@ return {
           "cmake",
           "http",
           "c_sharp",
+          "latex",
+          "yaml",
+          "html",
         },
         incremental_selection = {
           enable = true,
