@@ -103,11 +103,31 @@ sketchybar --add item clock right \
     label.padding_right=10 \
     background.padding_left=6 \
     background.padding_right=6 \
+  # --add item media right \
+  # --set media \
+  #   label.max_chars=30 \
+  #   scroll_texts=on \
+  #   drawing=off \
+  #   updates=on \
+  #   icon= \
+  #   icon.font="Hack Nerd Font:Regular:14.0" \
+  #   icon.padding_left=10 \
+  #   icon.padding_right=3 \
+  #   label.padding_left=3 \
+  #   label.padding_right=10 \
+  #   background.drawing=on \
+  #   background.color="$GREY_TRANSP" \
+  #   background.corner_radius=5 \
+  #   background.height=25 \
+  #   background.padding_left=6 \
+  #   background.padding_right=6 \
+  #   script="$PLUGIN_DIR/media.sh" \
+  # --subscribe media media_change \
   --add item timer right \
   --set timer script="~/.config/sketchybar/plugins/timer.sh" \
     update_freq=1 \
     drawing=off \
-  --add item things_todo right \
+  # --add item things_todo right \
   # --set things_todo update_freq=60 \
   #   script="$PLUGIN_DIR/things_todo.sh" \
   #   click_script="open -a Things3" \

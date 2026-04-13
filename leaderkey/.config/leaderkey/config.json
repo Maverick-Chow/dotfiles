@@ -1,0 +1,291 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/Microsoft Outlook.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/System/Applications/Music.app"
+        },
+        {
+          "key" : "i",
+          "type" : "application",
+          "value" : "/System/Applications/Messages.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/Things3.app"
+        },
+        {
+          "key" : "g",
+          "type" : "application",
+          "value" : "/Applications/Ghostty.app"
+        },
+        {
+          "key" : "v",
+          "type" : "application",
+          "value" : "/Applications/Visual Studio Code.app"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "f",
+              "type" : "application",
+              "value" : "/System/Library/CoreServices/Finder.app"
+            },
+            {
+              "key" : "s",
+              "type" : "folder",
+              "value" : "/Users/maverickchow/Desktop/My Stuff/002_Education/00_IC/Yr3"
+            },
+            {
+              "key" : "d",
+              "type" : "folder",
+              "value" : "/Users/maverickchow/Downloads"
+            },
+            {
+              "key" : "w",
+              "type" : "folder",
+              "value" : "/Users/maverickchow/Desktop/My Stuff/003_Work"
+            },
+            {
+              "key" : "a",
+              "type" : "application",
+              "value" : "/System/Applications/FaceTime.app"
+            },
+            {
+              "key" : "i",
+              "type" : "application",
+              "value" : "/System/Applications/FindMy.app"
+            }
+          ],
+          "key" : "f",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "a",
+              "type" : "application",
+              "value" : "/Applications/WhatsApp.app"
+            },
+            {
+              "key" : "e",
+              "type" : "application",
+              "value" : "/Applications/WeChat.app"
+            }
+          ],
+          "key" : "w",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "a",
+              "type" : "application",
+              "value" : "/Applications/Safari.app"
+            },
+            {
+              "key" : "y",
+              "type" : "application",
+              "value" : "/System/Applications/System Settings.app"
+            }
+          ],
+          "key" : "s",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "a",
+              "type" : "application",
+              "value" : "/System/Applications/Calendar.app"
+            },
+            {
+              "key" : "l",
+              "type" : "application",
+              "value" : "/Applications/Claude.app"
+            }
+          ],
+          "key" : "c",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "r",
+              "type" : "application",
+              "value" : "/System/Applications/Preview.app"
+            },
+            {
+              "key" : "e",
+              "type" : "application",
+              "value" : "/Applications/Perplexity.app"
+            }
+          ],
+          "key" : "p",
+          "type" : "group"
+        }
+      ],
+      "key" : "o",
+      "label" : "Open",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "r",
+          "type" : "application",
+          "value" : "/Applications/Raycast.app"
+        },
+        {
+          "key" : "e",
+          "label" : "Emojis",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "label" : "Confetti",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "m",
+          "label" : "Start Playlist",
+          "type" : "url",
+          "value" : "raycast://extensions/fedevitaledev/music/start-playlist"
+        },
+        {
+          "key" : "t",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/typing-practice/start-typing-practice"
+        }
+      ],
+      "iconPath" : "/Applications/Raycast.app",
+      "key" : "r",
+      "label" : "Raycast",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "c",
+          "label" : "Clipboard",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/clipboard-history/clipboard-history"
+        },
+        {
+          "key" : "l",
+          "label" : "Lock Screen",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/lock-screen"
+        },
+        {
+          "key" : "s",
+          "label" : "Sleep",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/sleep"
+        },
+        {
+          "key" : "v",
+          "label" : "Screen Saver",
+          "type" : "command",
+          "value" : "open -a ScreenSaverEngine"
+        },
+        {
+          "key" : "f",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/file-search/search-files"
+        }
+      ],
+      "iconPath" : "/System/Applications/System Settings.app",
+      "key" : "s",
+      "label" : "System",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "t",
+          "label" : "Today's Todos",
+          "type" : "url",
+          "value" : "raycast://extensions/loris/things/show-today-list"
+        },
+        {
+          "key" : "n",
+          "label" : "New Todo",
+          "type" : "url",
+          "value" : "raycast://extensions/loris/things/add-new-todo"
+        },
+        {
+          "key" : "i",
+          "type" : "url",
+          "value" : "raycast://extensions/loris/things/show-inbox-list"
+        }
+      ],
+      "iconPath" : "/Applications/Things3.app",
+      "key" : "t",
+      "label" : "Things",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "c",
+          "label" : "Today's Events",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/calendar/my-schedule"
+        }
+      ],
+      "iconPath" : "/System/Applications/Calendar.app",
+      "key" : "c",
+      "label" : "Calendar",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "f",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer Flow 25"
+        },
+        {
+          "key" : "b",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer Break 5"
+        },
+        {
+          "key" : "p",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer_pause"
+        },
+        {
+          "key" : "r",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer_resume"
+        },
+        {
+          "key" : "c",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer_cancel"
+        },
+        {
+          "key" : "l",
+          "type" : "command",
+          "value" : "source ~/.zshrc;timer Break 30"
+        }
+      ],
+      "key" : "p",
+      "label" : "Pomodoro",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
