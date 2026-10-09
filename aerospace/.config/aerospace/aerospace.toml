@@ -63,8 +63,7 @@ inner.horizontal = 10
 inner.vertical =   10
 outer.left =       10
 outer.bottom =     10
-# outer.top =        14
-outer.top =        50
+outer.top = [{ monitor."built-in" = 14 }, 50]
 outer.right =      10
 
 

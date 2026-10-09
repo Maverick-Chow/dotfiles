@@ -42,7 +42,7 @@
             {
               "key" : "s",
               "type" : "folder",
-              "value" : "/Users/maverickchow/Desktop/My Stuff/002_Education/00_IC/Yr3"
+              "value" : "/Users/maverickchow/Desktop/002_Education/00_IC/Yr4"
             },
             {
               "key" : "d",
@@ -52,7 +52,7 @@
             {
               "key" : "w",
               "type" : "folder",
-              "value" : "/Users/maverickchow/Desktop/My Stuff/003_Work"
+              "value" : "/Users/maverickchow/Desktop/003_Work"
             },
             {
               "key" : "a",
@@ -127,6 +127,11 @@
               "key" : "e",
               "type" : "application",
               "value" : "/Applications/Perplexity.app"
+            },
+            {
+              "key" : "h",
+              "type" : "application",
+              "value" : "/System/Applications/Photos.app"
             }
           ],
           "key" : "p",

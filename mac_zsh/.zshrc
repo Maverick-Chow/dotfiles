@@ -85,3 +85,5 @@ timer_resume(){
   rm "$PAUSED_FILE"
 }  # paste resume block
 timer_cancel(){ rm -f /tmp/sketchybar_timer /tmp/sketchybar_timer_paused; }
+
+alias pandoc='pandoc --defaults=/Users/maverickchow/.config/pandoc/defaults.yaml'
