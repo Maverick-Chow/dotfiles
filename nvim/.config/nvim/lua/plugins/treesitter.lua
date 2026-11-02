@@ -4,6 +4,10 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      -- tree-sitter CLI 0.26+ dropped --no-bindings, which this nvim-treesitter version
+      -- still passes when generating parsers (needed for latex)
+      require("nvim-treesitter.install").ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
+
       local config = require("nvim-treesitter.configs")
       config.setup({
         highlight = { enable = true },

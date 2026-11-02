@@ -1,14 +1,30 @@
 return {
   {
-    -- Plugin name and repository
-    "catppuccin/nvim",
-    -- Plugin settings
-    name = "catppuccin",
+    "rose-pine/neovim",
+    name = "rose-pine",
     priority = 1000,
-    -- Plugin configuration
     config = function()
-      vim.cmd.colorscheme "catppuccin"
-    end
+      require("rose-pine").setup({ dark_variant = "moon" })
+      -- default until auto-dark-mode picks moon/dawn from the system appearance
+      vim.cmd.colorscheme "rose-pine-moon"
+    end,
+  },
+  {
+    -- follow macOS appearance: rose pine moon (dark) / rose pine dawn (light)
+    "f-person/auto-dark-mode.nvim",
+    lazy = false,
+    opts = {
+      set_dark_mode = function()
+        vim.o.background = "dark"
+        vim.cmd.colorscheme "rose-pine-moon"
+      end,
+      set_light_mode = function()
+        vim.o.background = "light"
+        vim.cmd.colorscheme "rose-pine-dawn"
+      end,
+      update_interval = 3000,
+      fallback = "dark",
+    },
   },
   {
     "j-hui/fidget.nvim",
@@ -17,12 +33,8 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require('lualine').setup({
-        option = {
-          -- theme = 'dracula'
-          theme = 'ayu_light'
-        }
-      })
+      -- theme defaults to "auto", which follows the active colorscheme
+      require('lualine').setup({})
     end
   },
   {

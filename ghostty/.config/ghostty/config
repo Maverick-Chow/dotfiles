@@ -1,4 +1,6 @@
-theme = Catppuccin Mocha
+theme = light:Rose Pine Dawn,dark:Rose Pine Moon
 font-size = 16
 # Disable GTK client decorations/margins
 window-decoration = auto
+# hide the macOS titlebar (keeps rounded corners); drag with option+click on the frame
+macos-titlebar-style = hidden
