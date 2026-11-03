@@ -156,21 +156,10 @@
           "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
         },
         {
-          "key" : "p",
-          "label" : "Confetti",
+          "key" : "c",
+          "label" : "Clipboard",
           "type" : "url",
-          "value" : "raycast://confetti"
-        },
-        {
-          "key" : "m",
-          "label" : "Start Playlist",
-          "type" : "url",
-          "value" : "raycast://extensions/fedevitaledev/music/start-playlist"
-        },
-        {
-          "key" : "t",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/typing-practice/start-typing-practice"
+          "value" : "raycast://extensions/raycast/clipboard-history/clipboard-history"
         }
       ],
       "iconPath" : "/Applications/Raycast.app",
@@ -180,12 +169,6 @@
     },
     {
       "actions" : [
-        {
-          "key" : "c",
-          "label" : "Clipboard",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/clipboard-history/clipboard-history"
-        },
         {
           "key" : "l",
           "label" : "Lock Screen",
@@ -227,10 +210,11 @@
           "key" : "n",
           "label" : "New Todo",
           "type" : "url",
-          "value" : "raycast://extensions/loris/things/add-new-todo"
+          "value" : "things:///add?show-quick-entry=true"
         },
         {
           "key" : "i",
+          "label" : "Inbox",
           "type" : "url",
           "value" : "raycast://extensions/loris/things/show-inbox-list"
         }
@@ -289,6 +273,17 @@
       ],
       "key" : "p",
       "label" : "Pomodoro",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "type" : "command",
+          "value" : "osascript -e 'tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode'"
+        }
+      ],
+      "key" : "u",
       "type" : "group"
     }
   ],
