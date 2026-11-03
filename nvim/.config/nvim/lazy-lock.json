@@ -14,7 +14,6 @@
   "neominimap.nvim": { "branch": "main", "commit": "5b67c20e03fa1ce440ea3647e5e84a99363c2fca" },
   "nui.nvim": { "branch": "main", "commit": "8d3bce9764e627b62b07424e0df77f680d47ffdb" },
   "nvim-cmp": { "branch": "main", "commit": "059e89495b3ec09395262f16b1ad441a38081d04" },
-  "nvim-jdtls": { "branch": "master", "commit": "6e9d953f0b82bccdb834cfde0e893f3119c22592" },
   "nvim-lspconfig": { "branch": "master", "commit": "3e873195f501b1e02d9fd7e5af5cbe74fc2f98c1" },
   "nvim-treesitter": { "branch": "main", "commit": "523a9e148919f58eb5a013f76787e57696e00c93" },
   "nvim-treesitter-textobjects": { "branch": "main", "commit": "9937e5e356e5b227ec56d83d0a9d0a0f6bc9cad4" },
