@@ -456,13 +456,13 @@ function __icon_map() {
   "Edge")
     icon_result=":microsoft_edge:"
     ;;
-  "Excel")
+  "Excel" | "Microsoft Excel")
     icon_result=":microsoft_excel:"
     ;;
-  "Outlook")
+  "Outlook" | "Microsoft Outlook")
     icon_result=":microsoft_outlook:"
     ;;
-  "PowerPoint")
+  "PowerPoint" | "Microsoft PowerPoint")
     icon_result=":microsoft_power_point:"
     ;;
   "Microsoft Remote Desktop")
@@ -471,7 +471,7 @@ function __icon_map() {
   "Microsoft Teams" | "Microsoft Teams (work or school)")
     icon_result=":microsoft_teams:"
     ;;
-  "Word")
+  "Word" | "Microsoft Word")
     icon_result=":microsoft_word:"
     ;;
   "Min")
