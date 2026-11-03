@@ -23,8 +23,6 @@ function y() {
 # ====================
 alias ls="eza --icons --colour=always"
 alias cat="bat"
-alias cd="z"
-alias zz="z -"
 alias nn="cd /Users/maverickchow/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Maverick\'s\ Obsidian\ Vault;nvim"
 
 
@@ -86,4 +84,4 @@ timer_resume(){
 }  # paste resume block
 timer_cancel(){ rm -f /tmp/sketchybar_timer /tmp/sketchybar_timer_paused; }
 
-alias pandoc='pandoc --defaults=/Users/maverickchow/.config/pandoc/defaults.yaml'
+alias pandoc-default='pandoc --defaults=/Users/maverickchow/.config/pandoc/defaults.yaml'
