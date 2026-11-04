@@ -18,12 +18,23 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# superfile: rose pine moon/dawn to match macOS dark/light mode
+# (spf only reads its theme at startup, so pick it here and pass a generated config)
+function spf() {
+	local theme=rose-pine-dawn cfg="${XDG_CACHE_HOME:-$HOME/.cache}/superfile/config.toml"
+	defaults read -g AppleInterfaceStyle &>/dev/null && theme=rose-pine-moon
+	mkdir -p "${cfg:h}"
+	# theme goes first: appended at the end it would land inside the config's last [table]
+	{ echo "theme = \"$theme\""; grep -v '^theme *=' "$XDG_CONFIG_HOME/superfile/config.toml"; } > "$cfg"
+	command spf -c "$cfg" "$@"
+}
+
 # ====================
 # Alias
 # ====================
 alias ls="eza --icons --colour=always"
 alias cat="bat"
-alias nn="cd /Users/maverickchow/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Maverick\'s\ Obsidian\ Vault;nvim"
+alias nn='cd "$OBSIDIAN_PATH"; nvim'
 
 
 # ====================
@@ -36,12 +47,15 @@ source ~/.c-tools
 # Enable Haskell environment
 [ -f "/Users/maverickchow/.ghcup/env" ] && source "/Users/maverickchow/.ghcup/env"
 
+# XDG: CLI tools (superfile, lazygit) use ~/.config instead of ~/Library/Application Support
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Notes/MarkDown
 export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
-export NOTEBOOK="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
+export NOTEBOOK="$OBSIDIAN_PATH"
 
 # Enable LLVM
 # export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
@@ -85,3 +99,5 @@ timer_resume(){
 timer_cancel(){ rm -f /tmp/sketchybar_timer /tmp/sketchybar_timer_paused; }
 
 alias pandoc-default='pandoc --defaults=/Users/maverickchow/.config/pandoc/defaults.yaml'
+
+export PATH="$HOME/.local/bin:$PATH"
