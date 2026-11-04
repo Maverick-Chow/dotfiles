@@ -50,36 +50,6 @@ return {
     end
   },
   {
-    "Isrothy/neominimap.nvim",
-    version = "v3.*.*",
-    enabled = true,
-    lazy = false, -- NOTE: NO NEED to Lazy load
-    -- Optional
-    keys = {
-      -- Window-Specific Minimap Controls
-      { "<leader>mm", "<cmd>Neominimap winToggle<cr>",   desc = "Toggle minimap for current window" },
-      { "<leader>mo", "<cmd>Neominimap winRefresh<cr>",  desc = "Refresh minimap for current window" },
-      { "<leader>mf", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
-    },
-    init = function()
-      -- The following options are recommended when layout == "float"
-      vim.opt.wrap = false
-      vim.opt.sidescrolloff = 36 -- Set a large value
-
-      --- Put your configuration here
-      vim.g.neominimap = {
-        auto_enable = false,
-      }
-      require('neominimap').on()
-      require('neominimap').winOff({})
-      vim.api.nvim_create_autocmd({"WinNew"}, {
-        callback = function()
-          require('neominimap').winOff({})
-        end,
-      })
-    end,
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {

@@ -8,12 +8,6 @@ return {
     dashboard = {
       sections = {
         { section = "header" },
-        {
-          section = "terminal",
-          cmd = "fortune -s | cowsay",
-          padding = 1,
-          indent = 9,
-        },
         { section = "keys", gap = 0.5, padding = 1 },
         { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
         { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },

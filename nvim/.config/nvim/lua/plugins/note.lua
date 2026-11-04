@@ -65,6 +65,14 @@ return {
       { "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Obsidian Tags" },
       { "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Obsidian Paste Image" },
     }
+  },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "*",
+    opts = { width = 80 },
+    keys = {
+      { "<leader>z", "<cmd>NoNeckPain<cr>", desc = "Toggle centred mode" },
+    },
   }
 }
 
