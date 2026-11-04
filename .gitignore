@@ -1,0 +1,5 @@
+.DS_Store
+
+# tmux plugins are installed by tpm (prefix + I), so only tpm itself is kept
+tmux/.config/tmux/plugins/*
+!tmux/.config/tmux/plugins/tpm/
