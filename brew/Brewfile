@@ -78,6 +78,8 @@ brew "powerlevel10k"
 brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Smart session manager for the terminal
+brew "sesh"
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
 # Organize software neatly under a single directory tree (e.g. /usr/local)

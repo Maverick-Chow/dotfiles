@@ -1,0 +1,21 @@
+# sessions for sesh (tmux prefix + f, ^g to list only these)
+
+[[session]]
+name = "notes"
+path = "$OBSIDIAN_PATH" # set in .zshrc
+startup_command = "nvim"
+
+[[session]]
+name = "files"
+path = "~" # set in .zshrc
+startup_command = "spf"
+
+[[session]]
+name = "config"
+path = "~/dotfiles" # set in .zshrc
+startup_command = "neofetch;ls"
+
+[[session]]
+name = "blank"
+path = "~" # set in .zshrc
+startup_command = "neofetch;ls"

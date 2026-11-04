@@ -20,3 +20,5 @@ esac
 tmux set -g @rose_pine_variant "$variant"
 tmux set -g @rose_pine_bar_bg_disabled_color_option "$(tmux show -gv "@bar_bg_$variant")"
 ~/.config/tmux/plugins/tmux/rose-pine.tmux
+# the theme rewrites status-right, which drops continuum's autosave hook, so re-add it
+~/.config/tmux/plugins/tmux-continuum/continuum.tmux >/dev/null 2>&1
