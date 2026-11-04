@@ -6,6 +6,7 @@ source "$CONFIG_DIR/colors.sh"
 ##### Bar Appearance #####
 sketchybar --bar \
   position=top \
+  topmost=on \
   height=34 \
   notch_display_height=34 \
   y_offset=8 \
