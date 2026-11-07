@@ -16,24 +16,24 @@ return {
     },
   },
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*",
     lazy = true,
     event = {
       "BufReadPre " .. os.getenv("OBSIDIAN_PATH") .. "/*.md",
       "BufNewFile " .. os.getenv("OBSIDIAN_PATH") .. "/*.md",
     },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
     opts = {
+      legacy_commands = false, -- use :Obsidian <subcommand> instead of :ObsidianX
+      picker = { name = "snacks.picker" },
       workspaces = {
         {
           name = "vault",
           path = os.getenv("OBSIDIAN_PATH"),
         },
       },
-      ui = { enable = false },
+      ui = { enable = false }, -- render-markdown.nvim handles rendering
+      attachments = { folder = "assets/imgs" }, -- same folder as the Obsidian app's attachmentFolderPath
       -- note_id_func = function(title)
       --   -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
       --   -- In this case a note with the title 'My new note' will be given an ID that looks
@@ -50,20 +50,16 @@ return {
       --   end
       --   return tostring(os.time()) .. "-" .. suffix
       -- end,
-      ---@param url string
-      follow_url_func = function(url)
-        vim.ui.open(url) -- need Neovim 0.10.0+
-      end,
     },
     keys = {
-      { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Obsidian Backlinks" },
-      { "<leader>ol", "<cmd>ObsidianLink<cr>", desc = "Obsidian Link" },
-      { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "Obsidian New" },
-      { "<leader>oe", "<cmd>ObsidianExtractNote<cr>", desc = "Obsidian Extract" },
-      { "<leader>oq", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian QuickSwitch" },
-      { "<leader>os", "<cmd>ObsidianSearch<cr>", desc = "Obsidian Search" },
-      { "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Obsidian Tags" },
-      { "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Obsidian Paste Image" },
+      { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Obsidian Backlinks" },
+      { "<leader>ol", ":Obsidian link<cr>", mode = "v", desc = "Obsidian Link" },
+      { "<leader>on", "<cmd>Obsidian new<cr>", desc = "Obsidian New" },
+      { "<leader>oe", ":Obsidian extract_note<cr>", mode = "v", desc = "Obsidian Extract" },
+      { "<leader>oq", "<cmd>Obsidian quick_switch<cr>", desc = "Obsidian QuickSwitch" },
+      { "<leader>os", "<cmd>Obsidian search<cr>", desc = "Obsidian Search" },
+      { "<leader>ot", "<cmd>Obsidian tags<cr>", desc = "Obsidian Tags" },
+      { "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Obsidian Paste Image" },
     }
   },
   {
