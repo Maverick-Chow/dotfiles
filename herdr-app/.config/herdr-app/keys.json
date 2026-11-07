@@ -94,13 +94,14 @@
     "ctrl-a >": "prefix-keys.tab-right",
     "ctrl-a <": "prefix-keys.tab-left",
     "ctrl-a ]": "agent.next",
-    "ctrl-a [": "agent.prev",
+    "ctrl-a [": "prefix-keys.copy",
     "ctrl-a /": "terminal.search",
     "ctrl-a e": "prefix-keys.files",
     "ctrl-a g": "prefix-keys.changes",
     "ctrl-a :": "app.palette",
     "ctrl-a ?": "app.help",
     "ctrl-a L": "layout.switch",
+    "ctrl-a ;": "agent.prev",
     "ctrl-a": "mod.open:which-key"
   },
   "terminal": {
