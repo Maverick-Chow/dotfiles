@@ -3,3 +3,7 @@
 # tmux plugins are installed by tpm (prefix + I), so only tpm itself is kept
 tmux/.config/tmux/plugins/*
 !tmux/.config/tmux/plugins/tpm/
+
+# herdr-app rewrites these in every mod folder on start
+herdr-app/.config/herdr-app/mods/*/gpui-kit.d.ts
+herdr-app/.config/herdr-app/mods/*/jsconfig.json

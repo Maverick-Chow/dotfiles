@@ -1,0 +1,13 @@
+{
+  "zoom": 1.0,
+  "sounds": {
+    "enabled": true
+  },
+  "font_ligatures": false,
+  "minimum_contrast": 1.0,
+  "theme": {
+    "light": "rose-pine-dawn",
+    "dark": "rose-pine-moon"
+  },
+  "pane_scrollbars": false
+}
