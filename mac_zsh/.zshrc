@@ -50,6 +50,10 @@ source ~/.c-tools
 # XDG: CLI tools (superfile, lazygit) use ~/.config instead of ~/Library/Application Support
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# Editor: anything that opens a file for editing (claude's ctrl-o v, git, crontab) uses nvim
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home)
 
