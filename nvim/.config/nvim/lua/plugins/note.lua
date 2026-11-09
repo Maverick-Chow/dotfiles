@@ -1,3 +1,6 @@
+-- Vault location comes from $OBSIDIAN_PATH; obsidian.nvim is skipped when it's unset
+local vault = os.getenv("OBSIDIAN_PATH")
+
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -18,18 +21,19 @@ return {
   {
     "obsidian-nvim/obsidian.nvim",
     version = "*",
+    cond = vault ~= nil,
     lazy = true,
-    event = {
-      "BufReadPre " .. os.getenv("OBSIDIAN_PATH") .. "/*.md",
-      "BufNewFile " .. os.getenv("OBSIDIAN_PATH") .. "/*.md",
-    },
+    event = vault and {
+      "BufReadPre " .. vault .. "/*.md",
+      "BufNewFile " .. vault .. "/*.md",
+    } or nil,
     opts = {
       legacy_commands = false, -- use :Obsidian <subcommand> instead of :ObsidianX
       picker = { name = "snacks.picker" },
       workspaces = {
         {
           name = "vault",
-          path = os.getenv("OBSIDIAN_PATH"),
+          path = vault,
         },
       },
       ui = { enable = false }, -- render-markdown.nvim handles rendering
