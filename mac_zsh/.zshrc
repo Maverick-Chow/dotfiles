@@ -21,8 +21,11 @@ function y() {
 # superfile: rose pine moon/dawn to match macOS dark/light mode
 # (spf only reads its theme at startup, so pick it here and pass a generated config)
 function spf() {
-	local theme=rose-pine-dawn cfg="${XDG_CACHE_HOME:-$HOME/.cache}/superfile/config.toml"
-	defaults read -g AppleInterfaceStyle &>/dev/null && theme=rose-pine-moon
+	local theme=rose-pine-moon cfg="${XDG_CACHE_HOME:-$HOME/.cache}/superfile/config.toml"
+	if [[ "$OSTYPE" == darwin* ]]; then
+		theme=rose-pine-dawn
+		defaults read -g AppleInterfaceStyle &>/dev/null && theme=rose-pine-moon
+	fi
 	mkdir -p "${cfg:h}"
 	# theme goes first: appended at the end it would land inside the config's last [table]
 	{ echo "theme = \"$theme\""; grep -v '^theme *=' "$XDG_CONFIG_HOME/superfile/config.toml"; } > "$cfg"
@@ -42,10 +45,10 @@ alias nn='cd "$OBSIDIAN_PATH"; nvim'
 # ====================
 #
 # Enable C programming tools in the .c-tools folder (IC)
-source ~/.c-tools
+[ -f ~/.c-tools ] && source ~/.c-tools
 
 # Enable Haskell environment
-[ -f "/Users/maverickchow/.ghcup/env" ] && source "/Users/maverickchow/.ghcup/env"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 # XDG: CLI tools (superfile, lazygit) use ~/.config instead of ~/Library/Application Support
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -54,26 +57,34 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-# Notes/MarkDown
-export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
+# Notes/MarkDown: iCloud vault on the Mac, git clone of My-Notes-Backup elsewhere
+if [[ "$OSTYPE" == darwin* ]]; then
+  export OBSIDIAN_PATH="/Users/maverickchow/Library/Mobile Documents/iCloud~md~obsidian/Documents/Maverick's Obsidian Vault"
+else
+  export OBSIDIAN_PATH="$HOME/notes"
+fi
 export NOTEBOOK="$OBSIDIAN_PATH"
+
+# ====================
+# macOS only
+# ====================
+if [[ "$OSTYPE" == darwin* ]]; then
+  # Java
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  # Added by Antigravity
+  export PATH="/Users/maverickchow/.antigravity/antigravity/bin:$PATH"
+fi
 
 # Enable LLVM
 # export PATH="/opt/homebrew/opt/llvm@18/bin:$PATH"
 # export PATH="$HOME/bin:$PATH" # simlink clang++ from llvm18 to clang++-18 in ~/bin
 # ln -s "$(brew --prefix llvm@18)/bin/clang++" ~/bin/clang++-18
-#
-# Added by Antigravity
-export PATH="/Users/maverickchow/.antigravity/antigravity/bin:$PATH"
 
 # ====================
 # API keys
 # ====================
 
-source ~/api_keys/openai_key.sh
+[ -f ~/api_keys/openai_key.sh ] && source ~/api_keys/openai_key.sh
 
 # ====================
 # Starship
@@ -82,8 +93,9 @@ source ~/api_keys/openai_key.sh
 eval "$(starship init zsh)"
 
 # ====================
-# Sketchybar timer
+# Sketchybar timer (macOS only: BSD date -v, sketchybar)
 # ====================
+if [[ "$OSTYPE" == darwin* ]]; then
 timer()       { printf "%s\n%s" "$(date -v +${2:-25}M +%s)" "${1:-Timer}" > /tmp/sketchybar_timer; }
 timer_pause() {
   TIMER_FILE="/tmp/sketchybar_timer"
@@ -101,7 +113,8 @@ timer_resume(){
   rm "$PAUSED_FILE"
 }  # paste resume block
 timer_cancel(){ rm -f /tmp/sketchybar_timer /tmp/sketchybar_timer_paused; }
+fi
 
-alias pandoc-default='pandoc --defaults=/Users/maverickchow/.config/pandoc/defaults.yaml'
+alias pandoc-default='pandoc --defaults=$HOME/.config/pandoc/defaults.yaml'
 
 export PATH="$HOME/.local/bin:$PATH"
