@@ -81,6 +81,17 @@ export default class Tabs extends View {
     const enabled = shared("workspace.panels") ?? ["files", "changes"];
     this.syncPanel(space, panel, body, enabled);
     const list = agents();
+    // agents() comes in space, tab, pane order, so runs of the same key are the groups.
+    const groupBy = (xs, key) => xs.reduce((out, x) => {
+      const last = out[out.length - 1];
+      if (last && key(last[0]) === key(x)) last.push(x); else out.push([x]);
+      return out;
+    }, []);
+    const dot = a => div().size(8).rounded(4).bg(t[a.status] ?? t.dim);
+    const row = children => h_flex().gap(5).items_center().children(children);
+    const box = (group, el, fill) => group.length < 2 ? el : el.px(4).py(3).rounded(5).border(1).border_color(t.border).when(Boolean(fill), b => b.bg(fill));
+    const tabGroup = inTab => box(inTab, row(inTab.map(dot)), t.hover);
+    const spaceGroup = inSpace => box(inSpace, row(groupBy(inSpace, a => a.tab).map(tabGroup)));
     const label = (icon, text) => h_flex().gap(6).items_center().child(svg(`mods/workspace-chrome/${icon}.svg`).size(13)).child(text);
     return h_flex().size_full().min_w(0).px(10).pl(lightsPadding).gap(3).items_center().bg(t.chrome).border_b(1).border_color(t.border)
       .on_mouse_up("left", () => { this.pressed = null; })
@@ -91,7 +102,8 @@ export default class Tabs extends View {
         .child(label(space?.machine ? "server" : "monitor", space?.machine ?? "This computer"))
         .when(Boolean(space?.branch), el => el.child(label("branch", space.branch)))
         // One dot per agent, coloured by its status (blocked = needs you), in the agents list's order.
-        .child(h_flex().gap(5).items_center().children(list.map(a => div().size(8).rounded(4).bg(t[a.status] ?? t.dim)))))
+        // A space with 2+ agents gets a box, and so does a tab with 2+ agents inside it.
+        .child(h_flex().gap(6).items_center().children(groupBy(list, a => a.space).map(spaceGroup))))
       .when(w?.buttons, el => el.child(button("minimize", w.platform === "windows" ? svg("mods/my-tabs/win-min.svg").size(16) : "−", () => run("window.minimize")))
         .child(button("maximize", w.platform === "windows" ? svg(`mods/my-tabs/${w.maximized ? "win-restore" : "win-max"}.svg`).size(16) : "□", () => run("window.maximize")))
         .child(button("close-window", w.platform === "windows" ? svg("mods/my-tabs/win-close.svg").size(16) : svg("mods/pane/close.svg").size(13), () => run("window.close"))));

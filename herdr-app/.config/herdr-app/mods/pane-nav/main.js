@@ -1,30 +1,23 @@
-// Pane navigation like vim-tmux-navigator, plus moving out of a zoomed pane.
-// Draws nothing: it sits in a layout as a floating block only to receive
-// commands from keys.json and from Neovim (`herdr-app do pane-nav.go-left`).
-//   pane-nav.left|down|up|right        ctrl+h/j/k/l: Neovim gets the key, else go
-//   pane-nav.go-left|go-down|...       always go (Neovim at its edge, ctrl+a h/j/k/l)
-// Going from a zoomed pane unzooms first, as tmux does.
+// Pane navigation that leaves a zoomed pane, as tmux does. Draws nothing: it
+// sits in a layout as a floating block only to receive commands from keys.json
+// (ctrl+h/j/k/l and ctrl+a h/j/k/l). Neovim moves between its own splits with
+// <leader>d h/j/k/l instead, so herdr never has to hand it the key.
+//   pane-nav.go-left|go-down|go-up|go-right
 
 import { View, div } from "gpui-kit";
-import { panes, focused, run, hc, nextCommand } from "herdr";
+import { panes, focused, run, nextCommand } from "herdr";
 
-const KEY = { left: "ctrl+h", down: "ctrl+j", up: "ctrl+k", right: "ctrl+l" };
-const VIM = new Set(["nvim", "vim", "vi", "view"]);
+const DIRS = new Set(["left", "down", "up", "right"]);
 
 export default class PaneNav extends View {
   init(_props, cx) {
     cx.spawn(async () => {
       for (;;) {
         const c = await nextCommand();
-        const go = c.startsWith("go-");
-        const dir = go ? c.slice(3) : c;
-        if (!KEY[dir]) continue;
+        const dir = c.startsWith("go-") ? c.slice(3) : c;
+        if (!DIRS.has(dir)) continue;
         const f = focused();
         const pane = f?.pane && panes().find((p) => p.pane === f.pane);
-        if (!go && pane?.terminal && VIM.has(pane.program?.key)) {
-          await hc(["keys", pane.terminal, KEY[dir]]);
-          continue;
-        }
         if (pane?.zoomed) run("pane.zoom", { pane: pane.pane });
         run("pane.go", { direction: dir });
       }

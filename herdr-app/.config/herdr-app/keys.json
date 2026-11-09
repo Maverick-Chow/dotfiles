@@ -115,9 +115,9 @@
     "cmd-left": "send:\u0001",
     "cmd-right": "send:\u0005",
     "cmd-backspace": "send:\u0015",
-    "ctrl-h": "pane-nav.left",
-    "ctrl-j": "pane-nav.down",
-    "ctrl-k": "pane-nav.up",
-    "ctrl-l": "pane-nav.right"
+    "ctrl-h": "pane-nav.go-left",
+    "ctrl-j": "pane-nav.go-down",
+    "ctrl-k": "pane-nav.go-up",
+    "ctrl-l": "pane-nav.go-right"
   }
 }

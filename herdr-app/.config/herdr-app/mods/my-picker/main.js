@@ -1,9 +1,10 @@
-// Go to a tab or a folder. Drops from the Terminals layout's space chip (popup, at: "top"). Every
+// Go to a tab or a folder. Opens as a centred dialog, as tall as its rows up to 80% of the window. Every
 // space is in one list, those with something that needs you first. Type to
 // filter, ↑/↓ and Enter to go, ctrl+d to close a tab, Esc to leave. A filter
 // that matches no tab offers a new space by that name. ctrl+w / ctrl+g
 // show only spaces / agents; ctrl+x shows only zoxide's folders (picking one
 // opens a new space there, like sesh). The same key again shows everything.
+// The first rows you can pick carry a letter (^s, ^l, ...): ctrl+<letter> goes straight there.
 
 import { View, div, svg } from "gpui-kit";
 import { v_flex, h_flex, InputState, Input } from "gpui-base";
@@ -11,6 +12,9 @@ import { agents, spaces, terminals, run, exec, home, theme, settings, props, clo
 
 const PICK = new Set(["ctx", "create", "dir"]);
 const MODES = { w: "spaces", g: "agents", x: "zoxide" };
+// Jump letters, in order. Not the picker's own keys (j k w g x d), not ctrl+a (the prefix),
+// and not the emacs keys the search field may use (a b e f h k n p t v y o).
+const JUMP = ["s", "l", "r", "u", "c", "q", "z", "i", "m"];
 
 const MARK = { ansi6: "#22a99a", ansi3: "#e3814f", ansi4: "#5b8def", ansi5: "#8b7cf6", ansi2: "#3fae6a", ansi1: "#d9649a" };
 
@@ -140,7 +144,8 @@ export default class Picker extends View {
     let y = 0;
     rows.forEach((r) => { tops.push(y); y += H[r.kind] ?? 32; });
     const total = y;
-    const height = Math.min(320, this.listHeight ?? 320);
+    // Every row shows unless the dialog (80% of the window) can't fit them; then the list scrolls.
+    const height = Math.min(total, this.listHeight ?? total);
     const fixed = total > height;
     const maxScroll = Math.max(0, total - height);
     this.scroll = Math.max(0, Math.min(this.scroll, maxScroll));
@@ -155,6 +160,14 @@ export default class Picker extends View {
         : el;
     const visible = (i) => !fixed || (tops[i] + (H[rows[i].kind] ?? 32) > this.scroll && tops[i] < this.scroll + height);
 
+    // A jump letter on each of the first rows you can pick, like a key cap.
+    const cap = (r) => {
+      const n = pickable.indexOf(r);
+      if (n < 0 || n >= JUMP.length) return div().w(26).flex_none();
+      return div().w(26).flex_none().flex().justify_end().child(
+        div().px(4).rounded(4).bg(t.hover).border_1().border_color(t.border).text_color(r === sel ? t.foreground : t.dim)
+          .font_family("JetBrains Mono").text_size(10.5).child(`^${JUMP[n]}`));
+    };
     const row = (r) => {
       if (r.kind === "head") {
         return h_flex()
@@ -184,7 +197,8 @@ export default class Picker extends View {
           .hover((s) => s.bg(t.hover))
           .on_click(() => this.go(r))
           .child(svg("mods/workspace-chrome/folder.svg").size(12).flex_none().text_color(t.ansi4))
-          .child(div().flex_1().truncate().text_color(t.foreground).child(r.label));
+          .child(div().flex_1().truncate().text_color(t.foreground).child(r.label))
+          .child(cap(r));
       }
       if (r.kind === "create") {
         const label = `new space "${r.name}"`;
@@ -202,7 +216,8 @@ export default class Picker extends View {
           .hover((s) => s.bg(t.hover))
           .on_click(() => this.go(r))
           .child(div().w(12).child("+"))
-          .child(label);
+          .child(div().flex_1().truncate().child(label))
+          .child(cap(r));
       }
       const who = r.mine.map((a) => a.program?.name ?? "agent").join(" · ");
       const here = r.w.active && r.ctx.active;
@@ -222,17 +237,26 @@ export default class Picker extends View {
         .child(div().flex_1().truncate().text_color(t.foreground).when(here, (d) => d.font_semibold()).child(r.ctx.name))
         .when(r.ctx.status === "blocked", (el) => el.child(div().text_size(11).text_color(t.blocked).child("needs you")))
         .when(r.ctx.status === "done", (el) => el.child(div().text_size(11).text_color(t.done).child("finished")))
-        .child(div().text_size(11).text_color(t.dim).child(who + (r.team ? `  +${r.team}` : "")));
+        .child(div().text_size(11).text_color(t.dim).child(who + (r.team ? `  +${r.team}` : "")))
+        .child(cap(r));
     };
 
-    return v_flex()
+    // The dialog is a frameless 80%-of-the-window box: the panel sits centred in it, only as tall
+    // as its rows; a click on the empty part of the box closes, like one beside a dialog.
+    const panel = v_flex()
       .id("picker")
       .track_focus(this.handle)
       .w_full()
       .min_h(0)
+      .max_h_full()
       .p(18)
       .gap(10)
       .bg(t.popover)
+      .rounded(12)
+      .border_1()
+      .border_color(t.border)
+      .shadow_lg()
+      .on_mouse_down("left", (_e, cx) => cx.stop_propagation())
       .text_size(13)
       .on_key_down((e, cx) => {
         const k = e.key;
@@ -242,6 +266,7 @@ export default class Picker extends View {
         if ((down || up) && !pickable.length) return;
         if (down) this.at = (this.at + 1) % pickable.length;
         else if (up) this.at = (this.at + pickable.length - 1) % pickable.length;
+        else if (e.modifiers.control && JUMP.includes(k)) return this.go(pickable[JUMP.indexOf(k)]);
         else if (k === "d" && e.modifiers.control) {
           if (sel?.kind === "ctx") {
             this.close();
@@ -256,7 +281,7 @@ export default class Picker extends View {
         cx.notify();
       })
       .child(h_flex().items_center().child(div().flex_1().text_size(15).font_semibold().text_color(t.foreground).child(this.mode === "all" ? "Go to…" : `Go to… ${this.mode}`))
-        .child(div().text_size(11).text_color(t.dim).child("^j/^k move  ^w spaces  ^g agents  ^x zoxide  ·  Esc")))
+        .child(div().text_size(11).text_color(t.dim).child("^letter jump  ^j/^k move  ^w spaces  ^g agents  ^x zoxide  ·  Esc")))
       .child(
         h_flex().h(36).flex_none().px(10).gap(8).items_center().rounded(9).border_1().border_color(t.accent).bg(t.background)
           .child(svg("mods/workspace-chrome/search.svg").size(15).text_color(t.dim))
@@ -269,7 +294,7 @@ export default class Picker extends View {
             this.listHeight = size.height / settings().zoom;
             cx.notify();
           })
-          .h(Math.min(320, total))
+          .h(total)
           .min_h(0)
           .mb(6)
           .when(fixed, (el) =>
@@ -282,5 +307,6 @@ export default class Picker extends View {
             }))
           .children(rows.map((r, i) => (visible(i) ? place(row(r), i) : null)).filter(Boolean)),
       );
+    return v_flex().id("picker-box").size_full().justify_center().on_mouse_down("left", () => this.close()).child(panel);
   }
 }
