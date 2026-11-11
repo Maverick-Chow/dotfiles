@@ -136,6 +136,11 @@
           ],
           "key" : "p",
           "type" : "group"
+        },
+        {
+          "key" : "h",
+          "type" : "application",
+          "value" : "/Users/maverickchow/Applications/Herdr.app"
         }
       ],
       "key" : "o",
