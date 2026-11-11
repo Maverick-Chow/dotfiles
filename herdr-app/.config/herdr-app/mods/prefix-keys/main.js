@@ -5,6 +5,7 @@
 //   prefix-keys.copy                   tmux copy mode: the focused terminal's screen and history,
 //                                      read-only in Neovim in a zoomed split (y yanks to the
 //                                      clipboard, q closes it and the split with it)
+//   prefix-keys.last-space             back to the space shown before this one (tmux switch-client -l)
 
 import { View, div } from "gpui-kit";
 import { spaces, layout, panes, focused, run, nextCommand } from "herdr";
@@ -27,6 +28,9 @@ const copyMode = (terminal) => [
 
 export default class PrefixKeys extends View {
   init(_props, cx) {
+    // The space shown now and the one before it; render() runs whenever spaces change.
+    this.current = spaces().find((s) => s.active)?.id ?? null;
+    this.previous = null;
     const wait = (ms) => new Promise((resolve) => cx.timer.after(ms, resolve));
     cx.spawn(async () => {
       for (;;) {
@@ -46,6 +50,8 @@ export default class PrefixKeys extends View {
             if (added) { run("pane.zoom", { pane: added.pane }); break; }
             await wait(25);
           }
+        } else if (c === "last-space") {
+          if (this.previous && spaces().some((s) => s.id === this.previous)) run("space.select", { id: this.previous });
         } else if (c === "files" || c === "changes") {
           const root = layout(), panel = find(root, "panel"), body = find(root, "panel-body");
           if (panel && !panel.hidden && body?.active === c) run("layout.hide", { id: "panel" });
@@ -56,6 +62,11 @@ export default class PrefixKeys extends View {
   }
 
   render() {
+    const now = spaces().find((s) => s.active)?.id ?? null;
+    if (now && now !== this.current) {
+      this.previous = this.current;
+      this.current = now;
+    }
     return div();
   }
 }

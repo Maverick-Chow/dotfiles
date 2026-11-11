@@ -102,6 +102,7 @@
     "ctrl-a ?": "app.help",
     "ctrl-a L": "layout.switch",
     "ctrl-a ;": "agent.prev",
+    "ctrl-a tab": "prefix-keys.last-space",
     "ctrl-a": "mod.open:which-key"
   },
   "terminal": {

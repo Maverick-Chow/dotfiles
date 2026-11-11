@@ -36,6 +36,7 @@ const LABEL = {
   "agent.prev": "previous agent",
   "terminal.search": "search scrollback",
   "prefix-keys.copy": "copy mode (nvim)",
+  "prefix-keys.last-space": "last space",
   "prefix-keys.files": "files panel",
   "prefix-keys.changes": "changes panel",
   "app.palette": "command palette",
