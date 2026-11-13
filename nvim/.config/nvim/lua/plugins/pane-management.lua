@@ -9,13 +9,32 @@ if in_herdr then
   vim.keymap.set("n", "<leader>dl", "<cmd>wincmd l<cr>", { desc = "Move to right window" })
 end
 
+-- inside Rex (and not tmux), Rex passes ctrl-hjkl to nvim; at nvim's edge, hand focus back to Rex
+local in_rex = vim.env.REX_SESSION ~= nil and vim.env.TMUX == nil
+
+if in_rex then
+  local function nav(wincmd, dir)
+    return function()
+      local win = vim.fn.winnr()
+      vim.cmd("wincmd " .. wincmd)
+      if vim.fn.winnr() == win then
+        vim.fn.jobstart({ "rex", "focus", dir }, { detach = true })
+      end
+    end
+  end
+  vim.keymap.set("n", "<c-h>", nav("h", "left"), { desc = "Move to left window" })
+  vim.keymap.set("n", "<c-j>", nav("j", "down"), { desc = "Move to bottom window" })
+  vim.keymap.set("n", "<c-k>", nav("k", "up"), { desc = "Move to top window" })
+  vim.keymap.set("n", "<c-l>", nav("l", "right"), { desc = "Move to right window" })
+end
+
 return {
   {
     "szw/vim-maximizer",
   },
   {
     "christoomey/vim-tmux-navigator",
-    cond = not in_herdr,
+    cond = not in_herdr and not in_rex,
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
